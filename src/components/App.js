@@ -1,9 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
+import { filter } from 'lodash'
+
 import './App.css';
 
 import Header from './Header'
 import CreateCustomerForm from './CreateCustomerForm'
 import CustomersList from './CustomersList'
+import SearchBar from './SearchBar'
 
 const emptyFormData = { firstName: "", lastName: "", sex: "", birthday: "" }
 
@@ -11,6 +14,8 @@ class App extends Component {
 
   state = {
     formData: emptyFormData,
+    filterText: "",
+    filteredCustomers: [],
     customers: []
   }
 
@@ -32,12 +37,29 @@ class App extends Component {
 
       return {
         formData: emptyFormData,
-        customers: newCustomers
+        customers: newCustomers,
+        filterText: "",
+        filteredCustomers: []
       }
     })
   }
 
+  filterSearch = (customers) => (e) => {
+    this.setState({ filterText: [e.target.value] })
+
+    let filtered = filter(customers, (c) => {
+      const { firstName, lastName } = c
+      const combined = firstName + lastName
+      return combined.toLowerCase()
+              .search( e.target.value.toLowerCase()) !== -1
+    })
+
+    this.setState({ filteredCustomers: filtered })
+  }
+
   render() {
+    const { filterText, customers, filteredCustomers } = this.state
+
     return (
       <Fragment>
         <Header />
@@ -47,14 +69,17 @@ class App extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
+          <SearchBar 
+            searchText={filterText}
+            onChange={this.filterSearch(customers)}
+          />
           <CustomersList 
-            customers={this.state.customers}
+            customers={ filterText ? filteredCustomers : customers }
           />
         </main>
       </Fragment>
     );
   }
 } 
-
 
 export default App;

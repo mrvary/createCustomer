@@ -23,6 +23,8 @@ function CreateCustomerForm(props) {
         />
       </label>
 
+      <br />
+
       <label> Last name:
         <input 
           id="lastName"
@@ -34,6 +36,8 @@ function CreateCustomerForm(props) {
         />
       </label>
 
+      <br />
+
       <label> Date of birth:
         <input 
           type="date" name="birthday"
@@ -42,24 +46,31 @@ function CreateCustomerForm(props) {
         />
       </label>
 
-      <label>
-        <input 
-          type="radio"        
-          checked={sex === 'female'}
-          value="female"
-          name="sex"
-          onChange={handleChange}
-        /> Female
-      </label>
-      <label>
-        <input 
-          type="radio"        
-          checked={sex === 'male'}
-          value="male"
-          name="sex"
-          onChange={handleChange}
-        /> Male
-      </label>
+      <br />
+
+      {/* <div id="sex"> */}
+        <label>
+          <input 
+            type="radio"        
+            checked={sex === 'female'}
+            value="female"
+            name="sex"
+            onChange={handleChange}
+          /> Female
+        </label>
+        <label>
+          <input 
+            type="radio"        
+            checked={sex === 'male'}
+            value="male"
+            name="sex"
+            onChange={handleChange}
+          /> Male
+        </label>
+
+      {/* </div> */}
+
+      <br />
 
       <button>Create</button>
 
