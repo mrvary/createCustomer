@@ -13,7 +13,6 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
     color: '#ab0f59', 
     justifyContent: 'space-between',
