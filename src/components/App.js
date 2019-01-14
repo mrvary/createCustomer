@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { filter, sample } from 'lodash'
 import { storedCustomers, customColors } from './data/_storedCustomers'
 
@@ -110,6 +110,14 @@ class App extends Component {
             searchText={filterText}
             onChange={this.filterSearch}
           />
+        <Fab
+          color="primary"
+          className={classes.fab}
+          onClick={this.handleClickOpen}
+          type="submit"
+        >
+          <AddIcon />
+        </Fab>
         </Header>
         <main>
           <CreateCustomerDialog
@@ -124,14 +132,7 @@ class App extends Component {
             handleEdit={this.handleEdit}
           />
         </main>
-        <Fab
-          color="primary"
-          className={classes.fab}
-          onClick={this.handleClickOpen}
-          type="submit"
-        >
-          <AddIcon />
-        </Fab>
+
       </MuiThemeProvider>
     )
   }
