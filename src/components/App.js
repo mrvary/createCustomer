@@ -70,7 +70,9 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault()
     this.setState(({ formData, customers, idCounter, editMode }) => {
-      formData.avatarColor = sample(customColors)
+      if (formData.avatarColor === '') {
+        formData.avatarColor = sample(customColors)
+      }
       let newCustomers = editMode 
         ? customers.filter(({ id }) => formData.id !== id) 
         : customers
