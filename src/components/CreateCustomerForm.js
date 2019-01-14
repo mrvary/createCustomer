@@ -1,81 +1,84 @@
-import React from 'react'
+// import React from 'react'
 
-import './CreateCustomerForm.css'
+// import FormLabel from '@material-ui/core/FormLabel'
+// import FormControl from '@material-ui/core/FormControl'
+// import FormControlLabel from '@material-ui/core/FormControlLabel'
+// import Paper      from '@material-ui/core/Paper'
+// import Radio      from '@material-ui/core/Radio'
+// import RadioGroup from '@material-ui/core/RadioGroup'
+// import TextField  from '@material-ui/core/TextField'
+// import withStyles from '@material-ui/core/styles/withStyles'
 
-function CreateCustomerForm(props) {
-  const { handleSubmit, handleChange } = props
-  const { formData: {firstName, lastName, sex} } = props
+// const styles = theme => ({
+//   paper: {
+//     marginTop: theme.spacing.unit * 3,
+//     marginBottom: theme.spacing.unit * 3,
+//     padding: theme.spacing.unit * 2,
+//     [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
+//       marginTop: theme.spacing.unit * 6,
+//       marginBottom: theme.spacing.unit * 6,
+//       padding: theme.spacing.unit * 3,
+//     },
+//   },
+// })
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <legend>Create a customer: </legend>
+// function CreateCustomerForm(props) {
+//   const { handleSubmit, handleChange, classes} = props
+//   const { formData: {firstName, lastName, sex, birthday} } = props
 
-      <br /> 
+//   return (
+//     <Paper className={classes.paper}>
+//     <form>
+//       <legend>Create a customer: </legend>
 
-      <label> First name: 
-        <input 
-          id="firstName"
-          type="text"        
-          placeholder="Enter first name ..."
-          name="firstName"
-          value={firstName}
-          onChange={handleChange}
-        />
-      </label>
+//       <TextField
+//         autoFocus
+//         label="First name"
+//         name="firstName"
+//         placeholder="Enter your first name ..."
+//         onChange={handleChange}
+//         value={firstName}
+//         required
+//       />
 
-      <br />
+//       <TextField
+//         label="Last name"
+//         name="lastName"
+//         placeholder="Enter your last name ..."
+//         onChange={handleChange}
+//         value={lastName}
+//         required
+//       />
 
-      <label> Last name:
-        <input 
-          id="lastName"
-          type="text"        
-          placeholder="Enter last name ..."
-          name="lastName"
-          value={lastName}
-          onChange={handleChange}
-        />
-      </label>
+//       <TextField
+//         name="birthday"
+//         label="Birthday"
+//         type="date"
+//         onChange={handleChange}
+//         value={birthday}
+//         InputLabelProps={{
+//           shrink: true,
+//         }}
+//       />
 
-      <br />
+//       <FormControl component="fieldset">
+//           <FormLabel component="legend">Sex</FormLabel>
+//           <RadioGroup
+//             aria-label="Gender"
+//             name="sex"
+//             value={sex}
+//             onChange={handleChange}
+//           >
+//             <FormControlLabel value="female" control={<Radio />} label="Female" />
+//             <FormControlLabel value="male" control={<Radio />} label="Male" />
+//           </RadioGroup>
+//       </ FormControl>
 
-      <label> Date of birth:
-        <input 
-          type="date" name="birthday"
-          max={new Date().toJSON().slice(0, 10)}
-          onChange={handleChange}
-        />
-      </label>
+//       {/* <Button onClick={handleSubmit}>Add</Button> */}
 
-      <br />
+//     </form>
+//     </Paper>
+//   )
+// }
 
-      {/* <div id="sex"> */}
-        <label>
-          <input 
-            type="radio"        
-            checked={sex === 'female'}
-            value="female"
-            name="sex"
-            onChange={handleChange}
-          /> Female
-        </label>
-        <label>
-          <input 
-            type="radio"        
-            checked={sex === 'male'}
-            value="male"
-            name="sex"
-            onChange={handleChange}
-          /> Male
-        </label>
-
-      {/* </div> */}
-
-      <br />
-
-      <button>Create</button>
-
-    </form>
-  )
-}
-
-export default CreateCustomerForm
+// export default withStyles(styles)(CreateCustomerForm)
