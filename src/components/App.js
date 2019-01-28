@@ -70,9 +70,9 @@ class App extends Component {
   submitCustomer = e => {
     e.preventDefault();
     this.setState(({ formData, customers, idCounter, editMode }) => {
-      formData.avatarColor = editMode
-        ? formData.avatarColor
-        : sample(customColors);
+      if (formData.avatarColor === "") {
+        formData.avatarColor = sample(customColors);
+      }
       let newCustomers = editMode
         ? customers.filter(({ id }) => formData.id !== id)
         : customers;
@@ -109,6 +109,14 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Header>
           <SearchBar searchText={filterText} onChange={this.filterSearch} />
+          <Fab
+            color="primary"
+            className={classes.fab}
+            onClick={this.handleClickOpen}
+            type="submit"
+          >
+            <AddIcon />
+          </Fab>
         </Header>
         <main>
           <CreateCustomerDialog
@@ -123,14 +131,6 @@ class App extends Component {
             handleEdit={this.handleEdit}
           />
         </main>
-        <Fab
-          color="primary"
-          className={classes.fab}
-          onClick={this.handleClickOpen}
-          type="submit"
-        >
-          <AddIcon />
-        </Fab>
       </MuiThemeProvider>
     );
   }
