@@ -1,21 +1,21 @@
-import React from 'react'
+import React from "react";
 
-import SearchIcon from '@material-ui/icons/Search'
-import Input from '@material-ui/core/Input'
-import withStyles from '@material-ui/core/styles/withStyles'
+import SearchIcon from "@material-ui/icons/Search";
+import Input from "@material-ui/core/Input";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
   searchIconContainer: {
-    display: 'flex'
+    display: "flex"
   },
   searchIcon: {
-    marginTop: '3px'
+    marginTop: "3px"
   }
-})
+});
 
 const SearchBar = ({ onChange, searchText, classes }) => (
   <div className={classes.searchIconContainer}>
-    <SearchIcon className={classes.searchIcon}></SearchIcon>
+    <SearchIcon className={classes.searchIcon} />
 
     <Input
       label="Search.."
@@ -24,8 +24,7 @@ const SearchBar = ({ onChange, searchText, classes }) => (
       value={searchText}
       required
     />
-
   </div>
-)
+);
 
-export default withStyles(styles)(SearchBar)
+export default withStyles(styles)(SearchBar);

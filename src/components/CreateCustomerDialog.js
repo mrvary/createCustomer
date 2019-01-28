@@ -1,60 +1,49 @@
-import React from 'react'
+import React from "react";
 
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import FormLabel from '@material-ui/core/FormLabel'
-import FormControl from '@material-ui/core/FormControl'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import Grid from '@material-ui/core/Grid'
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import FormLabel from "@material-ui/core/FormLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import Grid from "@material-ui/core/Grid";
 
-const FormDialog = ({ 
-  handleSubmit,
-  handleChange,
-  handleClose,
+const FormDialog = ({
+  submitCustomer,
+  changeFormData,
+  closeDialog,
   openDialog,
-  formData: {
-    firstName,
-    lastName,
-    sex,
-    birthday
-  }
+  formData: { firstName, lastName, sex, birthday }
 }) => (
   <div>
-    <Dialog
-      open={openDialog}
-      onClose={handleClose}
-    >
-      <DialogTitle>
-        Add a new customer
-      </DialogTitle>
+    <Dialog open={openDialog} onClose={closeDialog}>
+      <DialogTitle>Add a new customer</DialogTitle>
 
       <DialogContent>
-        { 
-          renderGridWithFourComponents(
-            renderTextInput("First name", "firstName", handleChange, firstName),
-            renderTextInput("Last name", "lastName", handleChange, lastName),
-            renderDatePicker(handleChange, birthday),
-            renderSexSelect(handleChange, sex)
+        {renderGridWithFourComponents(
+          renderTextInput("First name", "firstName", changeFormData, firstName),
+          renderTextInput("Last name", "lastName", changeFormData, lastName),
+          renderDatePicker(changeFormData, birthday),
+          renderSexSelect(changeFormData, sex)
         )}
       </DialogContent>
 
       <DialogActions>
-        <Button onClick={handleClose} variant="contained" >
+        <Button onClick={closeDialog} variant="contained">
           Cancel
         </Button>
-        <Button onClick={handleSubmit} variant="contained" color="primary">
+        <Button onClick={submitCustomer} variant="contained" color="primary">
           Save
         </Button>
       </DialogActions>
     </Dialog>
   </div>
-)
+);
 
 const renderTextInput = (label, name, onChange, value) => (
   <TextField
@@ -65,7 +54,7 @@ const renderTextInput = (label, name, onChange, value) => (
     required
     fullWidth
   />
-)
+);
 
 const renderDatePicker = (onChange, value) => (
   <TextField
@@ -79,7 +68,7 @@ const renderDatePicker = (onChange, value) => (
     }}
     fullWidth
   />
-)
+);
 
 const renderSexSelect = (onChange, sex) => (
   <FormControl component="fieldset">
@@ -93,36 +82,36 @@ const renderSexSelect = (onChange, sex) => (
     >
       <FormControlLabel
         value="female"
-        control={<Radio color="primary"/>}
+        control={<Radio color="primary" />}
         label="Female"
       />
-      <FormControlLabel 
-        value="male" 
-        control={<Radio color="primary"/>} 
-        label="Male" 
+      <FormControlLabel
+        value="male"
+        control={<Radio color="primary" />}
+        label="Male"
       />
     </RadioGroup>
   </FormControl>
-)
+);
 
 const renderGridWithFourComponents = (...components) => (
   <Grid container spacing={24}>
     <Grid item xs={12} md={6}>
-      { components[0] }
+      {components[0]}
     </Grid>
 
     <Grid item xs={12} md={6}>
-      { components[1] }
+      {components[1]}
     </Grid>
 
     <Grid item xs={12} md={6}>
-      { components[2] }
+      {components[2]}
     </Grid>
 
     <Grid item xs={12} md={6}>
-      { components[3] }
+      {components[3]}
     </Grid>
   </Grid>
-)
+);
 
-export default FormDialog
+export default FormDialog;

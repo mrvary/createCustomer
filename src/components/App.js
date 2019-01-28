@@ -39,7 +39,7 @@ class App extends Component {
     idCounter: storedCustomers.length
   };
 
-  handleChange = ({ target: { name, value } }) => {
+  changeFormData = ({ target: { name, value } }) => {
     this.setState(({ formData }) => ({
       formData: { ...formData, [name]: value }
     }));
@@ -49,7 +49,7 @@ class App extends Component {
     this.setState({ openDialog: true });
   };
 
-  handleClose = () => {
+  closeDialog = () => {
     this.setState({ openDialog: false });
   };
 
@@ -67,7 +67,7 @@ class App extends Component {
     });
   };
 
-  handleSubmit = e => {
+  submitCustomer = e => {
     e.preventDefault();
     this.setState(({ formData, customers, idCounter, editMode }) => {
       formData.avatarColor = editMode
@@ -113,9 +113,9 @@ class App extends Component {
         <main>
           <CreateCustomerDialog
             {...this.state}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            handleClose={this.handleClose}
+            changeFormData={this.changeFormData}
+            submitCustomer={this.submitCustomer}
+            closeDialog={this.closeDialog}
           />
           <CustomersList
             customers={filterText ? filteredCustomers : customers}
